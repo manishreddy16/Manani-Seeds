@@ -21,12 +21,6 @@ const asset = (src: string, alt: string): MediaAsset => ({
   real: true,
 });
 
-const placeholderAsset = (src: string, alt: string): MediaAsset => ({
-  src,
-  alt,
-  real: false,
-});
-
 export const media = {
   logo: asset("/media/logo/manani-seeds-logo.png", "Manani Seeds logo"),
 
@@ -35,12 +29,12 @@ export const media = {
     farmer: asset("/media/hero/hero-farmer.jpg", "Farmer walking through a field"),
     seed: asset("/media/hero/hero-seed.jpg", "Close-up of a single seed"),
     corridor: [
-      placeholderAsset("/media/hero/corridor/corridor-1.jpg", "Paddy field in morning light"),
-      placeholderAsset("/media/hero/corridor/corridor-2.jpg", "Farmer working in a paddy field"),
-      placeholderAsset("/media/hero/corridor/corridor-3.jpg", "Close-up of paddy grains"),
-      placeholderAsset("/media/hero/corridor/corridor-4.jpg", "Rows of young crops"),
-      placeholderAsset("/media/hero/corridor/corridor-5.jpg", "Agricultural landscape at golden hour"),
-      placeholderAsset("/media/hero/corridor/corridor-6.jpg", "Seed and crop close-up"),
+      asset("/media/hero/corridor/corridor-1.svg", "Paddy field in morning light"),
+      asset("/media/hero/corridor/corridor-2.svg", "Farmer working in a paddy field"),
+      asset("/media/hero/corridor/corridor-3.svg", "Close-up of paddy grains"),
+      asset("/media/hero/corridor/corridor-4.svg", "Rows of young crops"),
+      asset("/media/hero/corridor/corridor-5.svg", "Agricultural landscape at golden hour"),
+      asset("/media/hero/corridor/corridor-6.svg", "Seed and crop close-up"),
     ],
   },
 

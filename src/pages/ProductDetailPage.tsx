@@ -3,7 +3,6 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
-  MessageCircle,
   Clock,
   Sprout,
   BarChart3,
@@ -13,6 +12,7 @@ import {
 import { getProductBySlug, products } from "@/data/products";
 import { MediaFrame } from "@/components/ui/MediaFrame";
 import { whatsappLink } from "@/lib/whatsapp";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 export function ProductDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -129,7 +129,7 @@ export function ProductDetailPage() {
               rel="noreferrer"
               className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-leaf-500 text-white px-7 py-3.5 font-semibold shadow-soft hover:scale-[1.03] transition-transform"
             >
-              <MessageCircle size={18} />
+              <WhatsAppIcon size={18} />
               {comingSoon ? "Get Notified on WhatsApp" : "Enquire on WhatsApp"}
             </a>
           </motion.div>

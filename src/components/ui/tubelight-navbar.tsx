@@ -6,6 +6,7 @@ import { navLinks, siteConfig } from "@/data/site";
 import { media } from "@/data/media";
 import { MediaFrame } from "./MediaFrame";
 import { cn } from "@/lib/cn";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 
 export function TubelightNavbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -52,21 +53,21 @@ export function TubelightNavbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
           className={cn(
-            "mt-3 flex items-center justify-between rounded-full px-4 sm:px-5 h-16 transition-all duration-500",
+            "mt-3 flex h-20 items-center justify-between rounded-full px-4 transition-all duration-500 sm:px-6",
             scrolled || !onHome
               ? "bg-cream-50/90 backdrop-blur-xl border border-ink-900/8 shadow-soft"
               : "bg-cream-50/75 backdrop-blur-md border border-white/50 shadow-soft",
           )}
         >
-          <Link to="/#home" className="flex items-center gap-2.5 shrink-0">
+          <Link to="/#home" className="flex shrink-0 items-center gap-3">
             <MediaFrame
               asset={media.logo}
               tone="sky"
               rounded="rounded-xl"
-              className="h-9 w-9"
+              className="h-12 w-12"
             />
 
-            <span className="font-display text-lg font-bold tracking-tight">
+            <span className="font-sans text-xl font-bold tracking-normal">
               <span className="text-sky-500">Manani</span>{" "}
               <span className="text-lime-600">Seeds</span>
             </span>
@@ -144,8 +145,9 @@ export function TubelightNavbar() {
               href={`https://wa.me/${siteConfig.whatsapp.number}`}
               target="_blank"
               rel="noreferrer"
-              className="mt-1 mx-2 mb-1 text-center rounded-2xl px-4 py-3 font-semibold text-white bg-gradient-to-r from-sky-500 to-leaf-500"
+              className="mx-2 mt-1 mb-1 inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-3 font-semibold text-white bg-gradient-to-r from-sky-500 to-leaf-500"
             >
+              <WhatsAppIcon size={18} />
               Enquire on WhatsApp
             </a>
           </nav>

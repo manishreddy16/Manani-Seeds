@@ -18,8 +18,13 @@ export const siteConfig = {
       "Hello Manani Seeds, I would like to know more about your seeds.",
   },
 
-  email: "info@mananiseeds.example.com",
-  address: "Manani Seeds, Telangana, India",
+  email: "mananiseeds@gmail.com",
+  address: "Manani Seeds headquarters, Medchal, Hyderabad, Telangana",
+  socialLinks: {
+    youtube: "https://youtube.com/@mananiseeds",
+    facebook: "https://facebook.com/mananiseeds",
+    instagram: "https://instagram.com/mananiseeds",
+  },
 };
 
 export const navLinks = [

@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import { MessageCircle, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { siteConfig } from "@/data/site";
 import { whatsappLink } from "@/lib/whatsapp";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 export function Contact() {
   return (
@@ -29,7 +30,7 @@ export function Contact() {
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-white text-ink-900 px-8 py-4 font-semibold shadow-soft hover:scale-[1.03] transition-transform"
             >
-              <MessageCircle size={20} />
+              <WhatsAppIcon size={20} />
               Enquire on WhatsApp
             </a>
           </div>

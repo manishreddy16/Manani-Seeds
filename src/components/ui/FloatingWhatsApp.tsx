@@ -1,6 +1,6 @@
-import { MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { whatsappLink } from "@/lib/whatsapp";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 
 export function FloatingWhatsApp() {
   return (
@@ -17,7 +17,7 @@ export function FloatingWhatsApp() {
       className="fixed z-40 bottom-5 right-5 sm:bottom-7 sm:right-7 flex items-center justify-center h-14 w-14 rounded-full bg-[#25D366] text-white shadow-[0_10px_30px_-8px_rgba(37,211,102,0.6)]"
     >
       <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-30" />
-      <MessageCircle className="relative" size={26} strokeWidth={2} />
+      <WhatsAppIcon className="relative" size={27} />
     </motion.a>
   );
 }
