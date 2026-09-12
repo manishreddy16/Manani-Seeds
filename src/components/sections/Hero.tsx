@@ -1,64 +1,20 @@
-import { Suspense, lazy, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, MessageCircle, ChevronDown } from "lucide-react";
 import { siteConfig } from "@/data/site";
 import { media } from "@/data/media";
 import { MediaFrame } from "@/components/ui/MediaFrame";
+import { ImageCorridor } from "@/components/hero/ImageCorridor";
 import { whatsappLink } from "@/lib/whatsapp";
 
-const SeedField = lazy(() =>
-  import("@/components/three/SeedField").then((m) => ({
-    default: m.SeedField,
-  })),
-);
-
 export function Hero() {
-  const [show3D, setShow3D] = useState(false);
-
-  useEffect(() => {
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    const isSmall = window.innerWidth < 640;
-
-    if (!prefersReduced) {
-      const timer = setTimeout(() => setShow3D(!isSmall), 150);
-      return () => clearTimeout(timer);
-    }
-  }, []);
-
   return (
     <section
       id="home"
-      className="relative min-h-[100svh] w-full overflow-hidden flex items-end sm:items-center"
+      className="hero-corridor relative min-h-[100svh] w-full overflow-hidden flex items-center"
     >
-      {/* Layered atmospheric background */}
-      <div className="absolute inset-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          className="h-full w-full object-cover"
-        >
-          <source src="/media/videos/hero.mp4" type="video/mp4" />
-        </video>
+      <ImageCorridor />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-ink-900/70 via-ink-900/30 to-ink-900/10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-900/40 via-transparent to-sky-900/20" />
-      </div>
-
-      
-
-      {/* Floating leaf/seed decorative elements (CSS-only fallback layer) */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[18%] left-[8%] h-3 w-3 rounded-full bg-lime-300/70 animate-float" />
-        <div className="absolute top-[30%] right-[15%] h-2 w-2 rounded-full bg-sky-300/70 animate-float-slow" />
-        <div className="absolute bottom-[35%] left-[20%] h-2.5 w-2.5 rounded-full bg-lime-200/60 animate-float" />
-      </div>
-
-      <div className="relative z-10 w-full mx-auto max-w-7xl px-6 lg:px-8 pb-16 sm:pb-0">
+      <div className="relative z-10 mx-auto w-full max-w-4xl px-6 text-center sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -66,16 +22,16 @@ export function Hero() {
             duration: 0.9,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="flex items-center gap-3 mb-6"
+          className="mb-6 flex items-center justify-center gap-3"
         >
           <MediaFrame
             asset={media.logo}
             tone="sky"
             rounded="rounded-2xl"
-            className="h-14 w-14 sm:h-16 sm:w-16 shadow-glow-sky"
+            className="h-14 w-14 shadow-glow-sky sm:h-16 sm:w-16"
           />
 
-          <span className="text-white/90 font-medium tracking-[0.2em] text-xs sm:text-sm uppercase">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-ink-700 sm:text-sm">
             Manani Seeds
           </span>
         </motion.div>
@@ -88,7 +44,7 @@ export function Hero() {
             delay: 0.15,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="text-balance text-4xl sm:text-6xl lg:text-7xl font-semibold text-white leading-[1.05] max-w-3xl"
+          className="mx-auto max-w-3xl text-balance text-4xl font-semibold leading-[1.05] text-ink-900 sm:text-6xl lg:text-7xl"
         >
           Seeds with a{" "}
           <span className="brand-gradient-text bg-gradient-to-r from-sky-300 to-lime-300 bg-clip-text text-transparent">
@@ -100,7 +56,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.35 }}
-          className="mt-6 max-w-xl text-base sm:text-lg text-white/85"
+          className="mx-auto mt-6 max-w-xl text-base text-ink-700 sm:text-lg"
         >
           {siteConfig.description}
         </motion.p>
@@ -109,11 +65,11 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.5 }}
-          className="mt-10 flex flex-col sm:flex-row gap-4"
+          className="mt-10 flex flex-col justify-center gap-4 sm:flex-row"
         >
           <a
             href="#products"
-            className="group inline-flex items-center justify-center gap-2 rounded-full bg-white text-ink-900 px-7 py-3.5 font-semibold shadow-soft hover:scale-[1.03] transition-transform"
+            className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink-900 px-7 py-3.5 font-semibold text-white shadow-soft transition-transform hover:scale-[1.03]"
           >
             Explore Our Seeds
             <ArrowRight
@@ -126,7 +82,7 @@ export function Hero() {
             href={whatsappLink()}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-full glass border border-white/30 text-white px-7 py-3.5 font-semibold hover:bg-white/20 transition-colors"
+            className="glass inline-flex items-center justify-center gap-2 rounded-full border border-ink-900/10 px-7 py-3.5 font-semibold text-ink-900 transition-colors hover:bg-white/80"
           >
             <MessageCircle size={18} />
             Enquire on WhatsApp
@@ -141,7 +97,7 @@ export function Hero() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-1 text-white/70"
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 text-ink-700/60 sm:flex"
       >
         <span className="text-[11px] tracking-[0.2em] uppercase">Scroll</span>
         <ChevronDown size={18} />
