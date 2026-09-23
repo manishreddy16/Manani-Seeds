@@ -37,14 +37,16 @@ function setPanelPosition(
 ) {
   const slot = interpolateSlot(depth);
   const width = window.innerWidth || 1440;
-  const responsiveScale = width < 640 ? 0.56 : width < 1024 ? 0.8 : 1;
+  const isMobile = width < 640;
+  const responsiveScale = isMobile ? 0.32 : width < 1024 ? 0.8 : 1;
   const x = slot.x * responsiveScale;
-  const y = slot.y * (width < 640 ? 0.7 : 1);
-  const z = slot.z * (width < 640 ? 0.52 : width < 1024 ? 0.72 : 1);
-  const scale = slot.scale * (width < 640 ? 0.82 : width < 1024 ? 0.92 : 1);
+  const y = slot.y * (isMobile ? 0.8 : 1);
+  const z = slot.z * (isMobile ? 0.28 : width < 1024 ? 0.72 : 1);
+  const scale = slot.scale * (isMobile ? 0.72 : width < 1024 ? 0.92 : 1);
+  const rotation = isMobile ? 8 : 12;
 
   panel.style.opacity = `${slot.opacity}`;
-  panel.style.transform = `translate(-50%, -50%) translate3d(${direction * x}vw, ${y}vh, ${z}px) rotateY(${direction * -12}deg) scale(${scale})`;
+  panel.style.transform = `translate(-50%, -50%) translate3d(${direction * x}vw, ${y}vh, ${z}px) rotateY(${direction * -rotation}deg) scale(${scale})`;
 }
 
 interface ImageCorridorProps {

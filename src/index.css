@@ -76,15 +76,41 @@
 }
 
 .hero-corridor::before {
-  content: "";
+  display: none;
+}
+
+.hero-eyebrow,
+.mobile-hero-sticker {
+  display: none;
+}
+
+.hero-grid {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background-image: radial-gradient(rgb(22 36 31 / 0.08) 1.1px, transparent 1.1px);
-  background-size: 18px 18px;
-  mask-image: radial-gradient(circle at center, black 0%, rgba(0, 0, 0, 0.5) 52%, transparent 100%);
-  opacity: 0.28;
+  --hero-grid-cell: 2.75rem;
+  --hero-grid-line: rgb(76 83 72 / 0.2);
+  background-image:
+    repeating-linear-gradient(
+      to right,
+      var(--hero-grid-line) 0,
+      var(--hero-grid-line) 0.8px,
+      transparent 0.8px,
+      transparent var(--hero-grid-cell)
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      var(--hero-grid-line) 0,
+      var(--hero-grid-line) 0.8px,
+      transparent 0.8px,
+      transparent var(--hero-grid-cell)
+    );
+  mask-image:
+    radial-gradient(ellipse 42% 34% at center 44%, transparent 0%, transparent 58%, black 100%),
+    linear-gradient(to bottom, black 0%, black 56%, rgb(0 0 0 / 0.58) 78%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
 }
 
 .marquee-track {
@@ -114,7 +140,7 @@
 }
 
 .image-corridor {
-  z-index: 0;
+  z-index: 2;
   perspective: 1100px;
   perspective-origin: center center;
 }
@@ -143,39 +169,106 @@
   will-change: transform, opacity;
 }
 
+.mobile-gallery-grid {
+  display: none;
+}
+
 @media (max-width: 1023px) {
   .image-corridor__panel {
     width: clamp(11rem, 19vw, 14rem);
     height: clamp(14rem, 28vh, 18rem);
   }
 
-  .hero-corridor::before {
-    background-size: 16px 16px;
-    opacity: 0.2;
-  }
 }
 
 @media (max-width: 639px) {
+  .journey-section {
+    display: none;
+  }
+
+  .desktop-gallery-rows {
+    display: none;
+  }
+
+  .mobile-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .mobile-gallery-grid__item {
+    aspect-ratio: 1 / 1.12;
+    overflow: hidden;
+    border-radius: 1rem;
+    background: rgb(255 255 255 / 0.45);
+  }
+
+  .mobile-gallery-grid__item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   .hero-corridor {
-    min-height: 78vh;
+    min-height: 100svh;
+    align-items: flex-start;
+    padding-bottom: 1.5rem;
   }
 
-  .image-corridor__panel {
-    width: clamp(7.5rem, 26vw, 9.5rem);
-    height: clamp(10rem, 32vw, 12.5rem);
-    top: 56%;
+  .hero-content {
+    transform: none;
+    margin-top: 6.5rem;
   }
 
-  .image-corridor__wash {
-    background:
-      radial-gradient(ellipse 48% 58% at center, rgb(255 253 247 / 0.82) 0%, rgb(255 253 247 / 0.68) 72%, transparent 100%),
-      linear-gradient(90deg, rgb(255 253 247 / 0.8) 0%, rgba(255, 253, 247, 0.72) 22%, rgba(255, 253, 247, 0.72) 78%, rgb(255 253 247 / 0.8) 100%);
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgb(22 36 31 / 0.12);
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.62);
+    padding: 0.4rem 0.75rem;
+    color: var(--color-ink-700);
+    font-family: var(--font-sans);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-transform: uppercase;
   }
 
-  .hero-corridor::before {
-    background-size: 14px 14px;
-    opacity: 0.15;
+  .hero-eyebrow span {
+    color: var(--color-lime-600);
+    font-size: 0.72rem;
   }
+
+  .mobile-hero-sticker {
+    display: block;
+    width: min(86vw, 22rem);
+    margin: 1.25rem auto 0;
+  }
+
+  .mobile-hero-sticker img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 24rem;
+    object-fit: contain;
+    object-position: center bottom;
+    filter: drop-shadow(0 1rem 1.2rem rgb(22 36 31 / 0.12));
+  }
+
+  .hero-grid {
+    --hero-grid-cell: 2.1rem;
+    --hero-grid-line: rgb(76 83 72 / 0.14);
+  }
+
+  .image-corridor {
+    display: none;
+  }
+
 }
 
 @media (prefers-reduced-motion: reduce) {

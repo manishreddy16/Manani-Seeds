@@ -16,7 +16,7 @@ const tones = ["lime", "earth", "leaf", "sky", "earth", "sky"] as const;
 
 export function Story() {
   return (
-    <section className="relative py-24 sm:py-32 overflow-hidden bg-ink-900">
+    <section className="journey-section relative py-24 sm:py-32 overflow-hidden bg-ink-900">
       <div className="pointer-events-none absolute inset-0 opacity-40 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgb(0_176_244_/_0.25),transparent)]" />
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div

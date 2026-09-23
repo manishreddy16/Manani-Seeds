@@ -157,24 +157,24 @@ export function TubelightNavbar() {
         "fixed top-0 inset-x-0 z-50 transition-all duration-300",
         scrolled
           ? "border-b border-white/30 bg-white/80 shadow-[0_18px_40px_-24px_rgba(22,36,31,0.25)] backdrop-blur-xl"
-          : "bg-transparent"
+          : "bg-white/55 backdrop-blur-lg"
       )}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="relative mt-3 flex items-center justify-between gap-4 md:justify-center">
+        <div className="relative mt-2 flex items-center justify-between gap-3 md:mt-3 md:gap-4 md:justify-center">
           <Link
             to="/#home"
-            className="flex shrink-0 items-center gap-3 px-1 md:absolute md:left-1"
+            className="flex shrink-0 items-center gap-2 px-1 md:absolute md:left-1 md:gap-3"
           >
             <MediaFrame
               asset={media.logo}
               tone="sky"
               rounded="rounded-none"
               fit="contain"
-              className="h-14 w-14"
+              className="h-11 w-11 md:h-14 md:w-14"
             />
 
-            <span className="font-sans text-[1.35rem] font-bold tracking-normal drop-shadow-sm">
+            <span className="font-sans text-[1.1rem] font-bold tracking-normal drop-shadow-sm md:text-[1.35rem]">
               <span className="text-sky-500">Manani</span>{" "}
               <span className="text-lime-600">Seeds</span>
             </span>
@@ -182,10 +182,10 @@ export function TubelightNavbar() {
 
           <div
             className={cn(
-              "flex h-16 items-center justify-end rounded-full px-3 transition-all duration-500 sm:px-4",
+              "flex h-14 items-center justify-end rounded-full px-2 transition-all duration-500 sm:px-3 md:h-16 md:px-4",
               scrolled || !onHome
                 ? "border border-white/30 bg-white/80 shadow-[0_18px_40px_-24px_rgba(22,36,31,0.18)] backdrop-blur-xl"
-                : "border border-white/40 bg-white/20 shadow-soft backdrop-blur-md"
+                : "border border-white/50 bg-white/65 shadow-soft backdrop-blur-md"
             )}
           >
             <nav className="hidden items-center gap-1 relative md:flex">

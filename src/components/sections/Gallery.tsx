@@ -40,7 +40,18 @@ export function Gallery() {
           </h2>
         </motion.div>
 
-        <div className="space-y-14 sm:space-y-16 md:space-y-20">
+        <div className="mobile-gallery-grid" aria-label="Agricultural gallery">
+          {sourceImages.map((item, index) => (
+            <div
+              key={`mobile-${item.src}-${index}`}
+              className="mobile-gallery-grid__item"
+            >
+              <img src={item.src} alt={item.alt} loading="lazy" />
+            </div>
+          ))}
+        </div>
+
+        <div className="desktop-gallery-rows space-y-14 sm:space-y-16 md:space-y-20">
           <ScrollVelocity
             velocity={6}
             direction={1}

@@ -16,19 +16,19 @@ export function FooterSection() {
       <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-lime-200/30 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-sky-200/30 blur-3xl" />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8 pt-16 pb-8">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
-          <div className="lg:col-span-1">
+      <div className="relative mx-auto max-w-7xl px-6 pt-10 pb-5 sm:px-8 md:pt-12 md:pb-6 lg:px-8">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-7 md:gap-10 lg:grid-cols-4">
+          <div className="col-span-2 lg:col-span-1">
             <Link to="/#home" className="flex items-center gap-2.5">
-              <MediaFrame asset={media.logo} tone="sky" rounded="rounded-xl" className="h-10 w-10" />
-              <span className="font-display text-xl font-semibold text-ink-900">
+              <MediaFrame asset={media.logo} tone="sky" rounded="rounded-xl" className="h-9 w-9 md:h-10 md:w-10" />
+              <span className="font-display text-lg font-semibold text-ink-900 md:text-xl">
                 Manani Seeds
               </span>
             </Link>
-            <p className="mt-4 text-sm text-ink-600 max-w-xs">
+            <p className="mt-2 max-w-xs text-sm text-ink-600 md:mt-4">
               {siteConfig.tagline}
             </p>
-            <p className="lang-te mt-2 text-sm text-ink-600 max-w-xs">
+            <p className="lang-te mt-1 max-w-xs text-sm text-ink-600 md:mt-2">
               {siteConfig.teluguTagline}
             </p>
           </div>
@@ -37,7 +37,7 @@ export function FooterSection() {
             <h3 className="text-xs font-semibold uppercase tracking-wider text-ink-500">
               Explore
             </h3>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-2 space-y-1.5 md:mt-4 md:space-y-3">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -55,7 +55,7 @@ export function FooterSection() {
             <h3 className="text-xs font-semibold uppercase tracking-wider text-ink-500">
               Products
             </h3>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-2 space-y-1.5 md:mt-4 md:space-y-3">
               {products.map((p) => (
                 <li key={p.slug}>
                   <Link
@@ -76,17 +76,17 @@ export function FooterSection() {
             <h3 className="text-xs font-semibold uppercase tracking-wider text-ink-500">
               Connect
             </h3>
-            <div className="mt-4">
+            <div className="mt-2 md:mt-4">
               <a
                 href={whatsappLink()}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-sky-500 to-leaf-500 px-5 py-2.5 text-sm font-semibold text-white shadow-soft hover:scale-[1.03] transition-transform"
+                className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-sky-500 to-leaf-500 px-4 py-2.5 text-sm font-semibold text-white shadow-soft transition-transform hover:scale-[1.03]"
               >
                 <WhatsAppIcon size={16} />
                 WhatsApp
               </a>
-              <p className="mt-4 text-sm text-ink-600">{siteConfig.address}</p>
+              <p className="mt-3 text-sm text-ink-600 md:mt-4">{siteConfig.address}</p>
               <a
                 href={`mailto:${siteConfig.email}`}
                 className="text-sm text-ink-600 hover:text-sky-600 transition-colors"
@@ -100,7 +100,7 @@ export function FooterSection() {
                 <Phone size={15} />
                 {siteConfig.phone.display}
               </a>
-              <div className="mt-5 flex items-center gap-2.5">
+              <div className="mt-3 flex items-center gap-2.5 md:mt-5">
                 <SocialLink href={siteConfig.socialLinks.youtube} label="YouTube">
                   <SocialGlyph kind="youtube" />
                 </SocialLink>
@@ -115,7 +115,7 @@ export function FooterSection() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-ink-900/5 pt-6">
+        <div className="mt-8 flex flex-col items-center justify-between gap-2 border-t border-ink-900/5 pt-4 sm:flex-row sm:gap-4 md:mt-10 md:pt-5">
           <p className="text-xs text-ink-500">
             © {year} Manani Seeds. All rights reserved.
           </p>

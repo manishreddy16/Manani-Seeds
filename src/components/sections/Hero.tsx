@@ -12,8 +12,14 @@ export function Hero() {
       className="hero-corridor relative flex min-h-svh w-full items-center overflow-hidden"
     >
       <ImageCorridor />
+      <div className="hero-grid" aria-hidden="true" />
 
-      <div className="relative z-10 mx-auto w-full max-w-4xl px-6 text-center sm:px-8">
+      <div className="hero-content relative z-10 mx-auto w-full max-w-4xl translate-y-12 px-6 text-center sm:translate-y-0 sm:px-8">
+        <div className="hero-eyebrow" aria-label="Premium agricultural seeds">
+          <span aria-hidden="true">✦</span>
+          Premium Agricultural Seeds
+        </div>
+
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -65,6 +71,22 @@ export function Hero() {
             <WhatsAppIcon size={18} />
             Enquire on WhatsApp
           </a>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.65 }}
+          className="mobile-hero-sticker"
+          aria-hidden="true"
+        >
+          <img
+            src="/media/farmers/farmer-couple.png"
+            alt=""
+            onError={(event) => {
+              event.currentTarget.parentElement?.setAttribute("hidden", "true");
+            }}
+          />
         </motion.div>
       </div>
     </section>
