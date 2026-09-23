@@ -1,3 +1,4 @@
+
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
@@ -16,24 +17,27 @@ export function TubelightNavbar() {
   const location = useLocation();
   const onHome = location.pathname === "/";
 
-  // Locked while a click-triggered smooth scroll is in flight, so the
-  // scroll-spy doesn't flicker through intermediate sections.
+  // Locked while a click-triggered smooth scroll is in flight,
+  // so the scroll-spy doesn't flicker through intermediate sections.
   const lockRef = useRef(false);
-  const settleTimerRef = useRef<number>();
-  const safetyTimerRef = useRef<number>();
+  const settleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const safetyTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const getHashFromHref = (href: string) => {
     const hash = href.split("#")[1];
     return hash ? `#${hash}` : "#home";
   };
 
-  const sectionIds = navLinks.map((link) => getHashFromHref(link.href).replace("#", ""));
+  const sectionIds = navLinks
+    .map((link) => getHashFromHref(link.href).replace("#", ""));
 
   const updateActiveFromScroll = useCallback(() => {
     if (lockRef.current) return;
 
     const doc = document.documentElement;
-    const nearBottom = window.innerHeight + window.scrollY >= doc.scrollHeight - 4;
+
+    const nearBottom =
+      window.innerHeight + window.scrollY >= doc.scrollHeight - 4;
 
     if (nearBottom && sectionIds.length > 0) {
       setActiveHash(`#${sectionIds[sectionIds.length - 1]}`);
@@ -45,7 +49,9 @@ export function TubelightNavbar() {
 
     for (const id of sectionIds) {
       const el = document.getElementById(id);
+
       if (!el) continue;
+
       if (el.getBoundingClientRect().top <= activationLine) {
         current = id;
       } else {
@@ -53,17 +59,24 @@ export function TubelightNavbar() {
       }
     }
 
-    if (current) setActiveHash(`#${current}`);
+    if (current) {
+      setActiveHash(`#${current}`);
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sectionIds.join(",")]);
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
-      if (onHome) updateActiveFromScroll();
+
+      if (onHome) {
+        updateActiveFromScroll();
+      }
     };
 
     onScroll();
+
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
 
@@ -74,39 +87,51 @@ export function TubelightNavbar() {
   }, [onHome, updateActiveFromScroll]);
 
   useEffect(() => {
-    if (onHome) updateActiveFromScroll();
+    if (onHome) {
+      updateActiveFromScroll();
+    }
   }, [onHome, updateActiveFromScroll]);
 
   useEffect(() => {
     if (!onHome || !location.hash) return;
-    const matched = navLinks.some((link) => getHashFromHref(link.href) === location.hash);
-    if (matched) setActiveHash(location.hash);
+
+    const matched = navLinks.some(
+      (link) => getHashFromHref(link.href) === location.hash
+    );
+
+    if (matched) {
+      setActiveHash(location.hash);
+    }
   }, [location.hash, onHome]);
 
   useEffect(() => {
     return () => {
-      window.clearTimeout(settleTimerRef.current);
-      window.clearTimeout(safetyTimerRef.current);
+      window.clearTimeout(settleTimerRef.current ?? undefined);
+      window.clearTimeout(safetyTimerRef.current ?? undefined);
     };
   }, []);
 
   const setActiveFromClick = (href: string) => {
     const hash = getHashFromHref(href);
+
     setActiveHash(hash);
     setMobileOpen(false);
 
-    // Ignore scroll-spy updates until the programmatic smooth-scroll settles,
-    // then hand control back to normal scroll tracking.
+    // Ignore scroll-spy updates until the programmatic smooth-scroll settles.
     lockRef.current = true;
-    window.clearTimeout(settleTimerRef.current);
-    window.clearTimeout(safetyTimerRef.current);
+
+    window.clearTimeout(settleTimerRef.current ?? undefined);
+    window.clearTimeout(safetyTimerRef.current ?? undefined);
 
     let lastY = window.scrollY;
     let settledTicks = 0;
 
     const checkSettled = () => {
       const y = window.scrollY;
-      settledTicks = Math.abs(y - lastY) < 1 ? settledTicks + 1 : 0;
+
+      settledTicks =
+        Math.abs(y - lastY) < 1 ? settledTicks + 1 : 0;
+
       lastY = y;
 
       if (settledTicks > 3) {
@@ -132,12 +157,15 @@ export function TubelightNavbar() {
         "fixed top-0 inset-x-0 z-50 transition-all duration-300",
         scrolled
           ? "border-b border-white/30 bg-white/80 shadow-[0_18px_40px_-24px_rgba(22,36,31,0.25)] backdrop-blur-xl"
-          : "bg-transparent",
+          : "bg-transparent"
       )}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative mt-3 flex items-center justify-between gap-4 md:justify-center">
-          <Link to="/#home" className="flex shrink-0 items-center gap-3 px-1 md:absolute md:left-1">
+          <Link
+            to="/#home"
+            className="flex shrink-0 items-center gap-3 px-1 md:absolute md:left-1"
+          >
             <MediaFrame
               asset={media.logo}
               tone="sky"
@@ -157,13 +185,14 @@ export function TubelightNavbar() {
               "flex h-16 items-center justify-end rounded-full px-3 transition-all duration-500 sm:px-4",
               scrolled || !onHome
                 ? "border border-white/30 bg-white/80 shadow-[0_18px_40px_-24px_rgba(22,36,31,0.18)] backdrop-blur-xl"
-                : "border border-white/40 bg-white/20 shadow-soft backdrop-blur-md",
+                : "border border-white/40 bg-white/20 shadow-soft backdrop-blur-md"
             )}
           >
             <nav className="hidden items-center gap-1 relative md:flex">
               {navLinks.map((link) => {
                 const targetHash = getHashFromHref(link.href);
-                const isActive = onHome && activeHash === targetHash;
+                const isActive =
+                  onHome && activeHash === targetHash;
 
                 return (
                   <Link
@@ -174,7 +203,7 @@ export function TubelightNavbar() {
                       "relative inline-flex items-center rounded-full px-[1.1rem] py-[0.6rem] text-sm font-medium transition-all duration-300",
                       isActive
                         ? "border border-[#e9e3d9] bg-[rgba(225,220,210,0.75)] text-ink-900 shadow-[0_12px_28px_-16px_rgba(22,36,31,0.4)] backdrop-blur-sm"
-                        : "text-ink-700 hover:text-ink-950",
+                        : "text-ink-700 hover:text-ink-950"
                     )}
                   >
                     {isActive && (
@@ -189,7 +218,9 @@ export function TubelightNavbar() {
                       />
                     )}
 
-                    <span className="relative z-10">{link.label}</span>
+                    <span className="relative z-10">
+                      {link.label}
+                    </span>
                   </Link>
                 );
               })}
@@ -227,7 +258,8 @@ export function TubelightNavbar() {
           <nav className="flex flex-col p-2">
             {navLinks.map((link) => {
               const targetHash = getHashFromHref(link.href);
-              const isActive = onHome && activeHash === targetHash;
+              const isActive =
+                onHome && activeHash === targetHash;
 
               return (
                 <Link
@@ -238,7 +270,7 @@ export function TubelightNavbar() {
                     "px-4 py-3 rounded-2xl text-ink-800 font-medium transition-colors",
                     isActive
                       ? "border border-[#e9e3d9] bg-[rgba(225,220,210,0.75)] text-ink-900 shadow-[0_12px_30px_-18px_rgba(22,36,31,0.38)]"
-                      : "hover:bg-white/40",
+                      : "hover:bg-white/40"
                   )}
                 >
                   {link.label}
@@ -261,3 +293,4 @@ export function TubelightNavbar() {
     </header>
   );
 }
+
