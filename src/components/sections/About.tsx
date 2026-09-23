@@ -17,7 +17,7 @@ export function About() {
           <MediaFrame
             asset={media.farmers[0]}
             tone="leaf"
-            className="h-[420px] w-full sm:h-[520px] shadow-soft"
+            className="aspect-[4/3] h-auto w-full shadow-soft"
           />
         </motion.div>
 

@@ -76,7 +76,7 @@ export function WhyUs() {
           <MediaFrame
             asset={media.farmers[1]}
             tone="sky"
-            className="h-80 sm:h-[28rem] w-full shadow-soft"
+            className="aspect-[27/34] h-auto w-full shadow-soft"
           />
           <div className="absolute -bottom-6 -left-6 h-32 w-32 rounded-full bg-gradient-to-br from-lime-300/40 to-sky-300/40 blur-2xl -z-10" />
         </motion.div>

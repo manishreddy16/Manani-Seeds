@@ -131,6 +131,105 @@
   }
 }
 
+.feature-marquee__anchor {
+  height: 42px;
+  margin-top: 1.25rem;
+}
+
+.feature-marquee {
+  position: relative;
+  z-index: 40;
+  display: flex;
+  height: 42px;
+  align-items: center;
+  overflow: hidden;
+  border-top: 1px solid rgb(22 36 31 / 0.06);
+  border-bottom: 1px solid rgb(22 36 31 / 0.06);
+  background: rgb(255 253 247 / 0.86);
+  color: var(--color-ink-700);
+}
+
+.feature-marquee--floating {
+  position: fixed;
+  right: 0;
+  bottom: 16px;
+  left: 0;
+  z-index: 40;
+  margin-top: 0;
+}
+
+.feature-marquee__track {
+  display: flex;
+  width: max-content;
+  min-width: 100%;
+  animation: feature-marquee-scroll 24s linear infinite;
+  will-change: transform;
+}
+
+.feature-marquee__group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.feature-marquee__item {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+.feature-marquee__item svg {
+  color: var(--color-lime-700);
+}
+
+.feature-marquee__separator {
+  width: 3px;
+  height: 3px;
+  margin-left: 1rem;
+  border-radius: 999px;
+  background: var(--color-sky-500);
+  opacity: 0.55;
+}
+
+@keyframes feature-marquee-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@media (min-width: 768px) {
+  .feature-marquee__anchor {
+    height: 46px;
+    margin-top: 1.5rem;
+  }
+
+  .feature-marquee {
+    height: 46px;
+  }
+
+  .feature-marquee__group {
+    gap: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .feature-marquee__item {
+    font-size: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-marquee__track {
+    animation-play-state: paused;
+  }
+}
+
 .image-corridor,
 .image-corridor__track {
   position: absolute;
@@ -218,7 +317,7 @@
 
   .hero-content {
     transform: none;
-    margin-top: 6.5rem;
+    margin-top: 4.5rem;
   }
 
   .hero-eyebrow {

@@ -66,7 +66,7 @@ export function Hero() {
             href={whatsappLink()}
             target="_blank"
             rel="noreferrer"
-            className="glass inline-flex items-center justify-center gap-2 rounded-full border border-ink-900/10 px-7 py-3.5 font-semibold text-ink-900 transition-colors hover:bg-white/80"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-[#25D366]/60 bg-[#25D366] px-7 py-3.5 font-semibold text-white shadow-[0_10px_28px_-12px_rgba(37,211,102,0.8)] transition-transform hover:scale-[1.03]"
           >
             <WhatsAppIcon size={18} />
             Enquire on WhatsApp

@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { TubelightNavbar } from "@/components/ui/tubelight-navbar";
 import { FooterSection } from "@/components/ui/footer-section";
-import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 import { ScrollToHash } from "@/components/ScrollToHash";
 import { Home } from "@/pages/Home";
 import { ProductDetailPage } from "@/pages/ProductDetailPage";
@@ -18,7 +17,6 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <FooterSection />
-      <FloatingWhatsApp />
     </div>
   );
 }

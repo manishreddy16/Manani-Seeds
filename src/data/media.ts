@@ -52,7 +52,7 @@ export const media = {
 
   farmers: [
     jpegAsset("farmer-1", "Farmer in a paddy field"),
-    placeholder("/media/ai/farmer-inspecting-crop.jpg", "Farmer inspecting crop"),
+    jpegAsset("farmer-2", "Farmer inspecting crop"),
     placeholder("/media/ai/farmer-holding-grain.jpg", "Farmer holding grain"),
     placeholder("/media/ai/farmer-at-sunrise.jpg", "Farmer at sunrise"),
   ],

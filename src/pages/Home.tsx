@@ -1,5 +1,6 @@
 import { Hero } from "@/components/sections/Hero";
 import { Stats } from "@/components/sections/Stats";
+import { FeatureMarquee } from "@/components/ui/feature-marquee";
 import { About } from "@/components/sections/About";
 import { Story } from "@/components/sections/Story";
 import { Products } from "@/components/sections/Products";
@@ -12,6 +13,7 @@ export function Home() {
     <main>
       <Hero />
       <Stats />
+      <FeatureMarquee />
       <About />
       <Story />
       <Products />
