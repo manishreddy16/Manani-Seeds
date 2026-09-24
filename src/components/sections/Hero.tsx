@@ -40,7 +40,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.35 }}
-          className="mx-auto mt-6 max-w-xl text-base text-ink-700 sm:text-lg"
+          className="mx-auto mt-3 max-w-xl font-display text-sm font-medium leading-relaxed tracking-[0.01em] text-ink-700 sm:mt-6 sm:text-lg"
         >
           {siteConfig.description}
         </motion.p>
@@ -49,11 +49,11 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.5 }}
-          className="mt-10 flex flex-col justify-center gap-4 sm:flex-row"
+          className="mt-6 flex flex-col justify-center gap-3 sm:mt-10 sm:flex-row sm:gap-4"
         >
           <a
             href="#products"
-            className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink-900 px-7 py-3.5 font-semibold text-white shadow-soft transition-transform hover:scale-[1.03]"
+            className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink-900 px-5 py-3 font-semibold text-white shadow-soft transition-transform hover:scale-[1.03] sm:w-52"
           >
             Explore Our Seeds
             <ArrowRight
@@ -66,7 +66,7 @@ export function Hero() {
             href={whatsappLink()}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-[#25D366]/60 bg-[#25D366] px-7 py-3.5 font-semibold text-white shadow-[0_10px_28px_-12px_rgba(37,211,102,0.8)] transition-transform hover:scale-[1.03]"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#25D366]/60 bg-[#25D366] px-5 py-3 font-semibold text-white shadow-[0_10px_28px_-12px_rgba(37,211,102,0.8)] transition-transform hover:scale-[1.03] sm:w-52"
           >
             <WhatsAppIcon size={18} />
             Enquire on WhatsApp

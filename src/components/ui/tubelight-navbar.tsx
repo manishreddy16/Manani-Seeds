@@ -182,10 +182,10 @@ export function TubelightNavbar() {
 
           <div
             className={cn(
-              "flex h-14 items-center justify-end rounded-full px-2 transition-all duration-500 sm:px-3 md:h-16 md:px-4",
+              "flex h-14 items-center justify-end transition-all duration-500 md:h-16 md:rounded-full md:px-4",
               scrolled || !onHome
-                ? "border border-white/30 bg-white/80 shadow-[0_18px_40px_-24px_rgba(22,36,31,0.18)] backdrop-blur-xl"
-                : "border border-white/50 bg-white/65 shadow-soft backdrop-blur-md"
+                ? "md:border md:border-white/30 md:bg-white/80 md:shadow-[0_18px_40px_-24px_rgba(22,36,31,0.18)] md:backdrop-blur-xl"
+                : "md:border md:border-white/50 md:bg-white/65 md:shadow-soft md:backdrop-blur-md"
             )}
           >
             <nav className="hidden items-center gap-1 relative md:flex">
@@ -241,7 +241,7 @@ export function TubelightNavbar() {
             <button
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               onClick={() => setMobileOpen((v) => !v)}
-              className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-full text-ink-900 hover:bg-white/30 transition-colors"
+              className="md:hidden inline-flex items-center justify-center h-10 w-10 text-ink-900 transition-colors"
             >
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
