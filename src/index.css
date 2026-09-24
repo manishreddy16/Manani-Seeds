@@ -132,7 +132,7 @@
 }
 
 .feature-marquee__anchor {
-  height: 42px;
+  height: 56px;
   margin-top: 1.25rem;
 }
 
@@ -140,7 +140,7 @@
   position: relative;
   z-index: 40;
   display: flex;
-  height: 42px;
+  height: 56px;
   align-items: center;
   overflow: hidden;
   border-top: 1px solid rgb(22 36 31 / 0.06);
@@ -152,7 +152,7 @@
 .feature-marquee--floating {
   position: fixed;
   right: 0;
-  bottom: 16px;
+  bottom: 6px;
   left: 0;
   z-index: 40;
   margin-top: 0;
@@ -161,14 +161,17 @@
 .feature-marquee__track {
   display: flex;
   width: max-content;
-  min-width: 100%;
-  animation: feature-marquee-scroll 24s linear infinite;
+  min-width: max-content;
+  flex-shrink: 0;
+  white-space: nowrap;
+  animation: feature-marquee-scroll 8s linear infinite;
   will-change: transform;
 }
 
 .feature-marquee__group {
   display: flex;
   flex: 0 0 auto;
+  white-space: nowrap;
   align-items: center;
   gap: 1.5rem;
   padding-right: 1.5rem;
@@ -204,14 +207,18 @@
   to { transform: translate3d(-50%, 0, 0); }
 }
 
+.feature-marquee__anchor + #about {
+  padding-top: 3rem;
+}
+
 @media (min-width: 768px) {
   .feature-marquee__anchor {
-    height: 46px;
+    height: 60px;
     margin-top: 1.5rem;
   }
 
   .feature-marquee {
-    height: 46px;
+    height: 60px;
   }
 
   .feature-marquee__group {
@@ -221,6 +228,10 @@
 
   .feature-marquee__item {
     font-size: 0.75rem;
+  }
+
+  .feature-marquee__anchor + #about {
+    padding-top: 5rem;
   }
 }
 
