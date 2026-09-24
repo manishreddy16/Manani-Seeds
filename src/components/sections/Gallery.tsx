@@ -44,7 +44,13 @@ export function Gallery() {
           {sourceImages.map((item, index) => (
             <div
               key={`mobile-${item.src}-${index}`}
-              className="mobile-gallery-grid__item"
+              className={`mobile-gallery-grid__item ${
+                index === 0 || index === 7
+                  ? "mobile-gallery-grid__item--wide"
+                  : index === 2 || index === 5
+                    ? "mobile-gallery-grid__item--tall"
+                    : ""
+              }`}
             >
               <img src={item.src} alt={item.alt} loading="lazy" />
             </div>
